@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Seven Technologies | Enterprise IT & Software Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           CSS VARIABLES & GLOBAL RESET
+           ========================================= */
+        :root {
+            --primary: #08b9d4;
+            --primary-hover: #079db5;
+            --navy: #071d3a;
+            --navy-deep: #031126;
+            --bg-darker: #06162d;
+            --bg-dark: #f7fafc;
+            --bg-card: #ffffff;
+            --text-light: #071d3a;
+            --text-muted: #53657a;
+            --border-color: rgba(7, 29, 58, 0.10);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary);
+        }
+
+        /* =========================================
+           REUSABLE UTILITIES
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            font-size: 1.1rem;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .bg-alt {
+            background-color: var(--bg-card);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary);
+            color: #071d3a;
+            font-weight: 800;
+            border-radius: 50px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(8, 185, 212, 0.20);
+            color: #071d3a;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: #071d3a;
+        }
+        
+        /* Small button variant for service cards */
+        .btn-sm {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        nav {
+            /* position: fixed; */
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        #home {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center top, #1e293b 0%, #070b14 100%);
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(8, 185, 212, 0.08);
+            color: var(--primary);
+            border: 1px solid rgba(8, 185, 212, 0.20);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* =========================================
+           ABOUT & VALUES SECTION
+           ========================================= */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: var(--bg-darker);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item h4 {
+            font-size: 3rem;
+            color: var(--primary);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--bg-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* =========================================
+           SERVICES SECTION
+           ========================================= */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-darker);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex-grow: 1; /* Pushes the button to the bottom */
+        }
+
+        /* =========================================
+           TECH STACK SECTION
+           ========================================= */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .tech-item {
+            padding: 15px 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(8, 185, 212, 0.05);
+        }
+
+        /* =========================================
+           WORK PROCESS
+           ========================================= */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: #071d3a;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+
+        .process-step h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           TESTIMONIALS
+           ========================================= */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-darker);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stars {
+            color: var(--primary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .client-info h4 {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .client-info span {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* =========================================
+           FAQ SECTION
+           ========================================= */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        details[open] summary::after {
+            content: '−';
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
+        /* =========================================
+           CONTACT SECTION
+           ========================================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            background-color: var(--bg-darker);
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .contact-desc {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .detail-icon {
+            background: rgba(8, 185, 212, 0.08);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .detail-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .detail-text p, .detail-text a {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-form label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--bg-darker);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        /* =========================================
+           PRIVACY POLICY SECTION STYLES
+           ========================================= */
+        .privacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 40px 50px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .privacy-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin: 30px 0 15px 0;
+        }
+
+        .privacy-content h3:first-of-type {
+            margin-top: 20px;
+        }
+
+        .privacy-content p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .privacy-content ul {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            padding-left: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .privacy-content ul li {
+            margin-bottom: 10px;
+        }
+        
+        .privacy-content strong {
+            color: var(--text-light);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: #04070c;
+            padding: 80px 0 30px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            margin-top: 20px;
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-dark);
+            color: #fff;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .newsletter-form button {
+            padding: 12px 20px;
+            background: var(--primary);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-hover);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Media Queries)
+           ========================================= */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 3.5rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            .hero-title { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .form-row { grid-template-columns: 1fr; }
+            .about-stats, .values-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .detail-text p { word-break: break-all; } 
+            .privacy-content { padding: 30px 20px; }
+        }
+    
+        /* =========================================
+           AARON SEVEN TECHNOLOGIES BRAND THEME
+           Navy + Cyan + White, based on supplied logo
+           ========================================= */
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        nav {
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid rgba(7,29,58,0.10);
+            box-shadow: 0 8px 30px rgba(7,29,58,0.06);
+        }
+
+        .nav-container { height: 88px; }
+
+        .logo {
+            width: 205px;
+            height: 76px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links a { color: var(--navy); }
+        .nav-links a:hover { color: var(--primary); }
+
+        #home {
+            min-height: 820px;
+            background:
+                radial-gradient(circle at 50% 10%, rgba(8,185,212,0.12), transparent 35%),
+                linear-gradient(135deg, #ffffff 0%, #f4f9fc 58%, #eaf7fb 100%);
+        }
+
+        #home::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg, transparent 0 72%, rgba(8,185,212,0.05) 72.2%, transparent 72.5%),
+                linear-gradient(140deg, transparent 0 80%, rgba(7,29,58,0.04) 80.2%, transparent 80.5%);
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            width: min(360px, 75vw);
+            height: auto;
+            margin: 0 auto 18px;
+            display: block;
+            filter: drop-shadow(0 18px 30px rgba(7,29,58,0.10));
+        }
+
+        .hero-badge {
+            background: rgba(8,185,212,0.08);
+            color: #078aa0;
+            border-color: rgba(8,185,212,0.24);
+        }
+
+        .hero-title { color: var(--navy); }
+        .hero-title span, .section-title span { color: var(--primary); }
+        .hero-subtitle { color: #53657a; }
+
+        .btn {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(8,185,212,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--navy);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .bg-alt { background: #eef5f8; }
+
+        .section-title, .about-text h3, .service-card h3,
+        .process-step h4, .client-info h4, .contact-info h3,
+        .detail-text h4, .privacy-content h3, .footer-links h4 {
+            color: var(--navy);
+        }
+
+        .section-subtitle, .about-text p, .service-card p,
+        .process-step p, .testimonial-text, .contact-desc,
+        .detail-text p, .detail-text a, .privacy-content p,
+        .privacy-content ul, .footer-about p, .footer-links ul li a {
+            color: var(--text-muted);
+        }
+
+        .about-stats, .service-card, .testimonial-card,
+        .contact-grid, .privacy-content {
+            background: #ffffff;
+            border-color: rgba(7,29,58,0.09);
+            box-shadow: 0 12px 35px rgba(7,29,58,0.05);
+        }
+
+        .stat-item h4, .stars, .client-info span { color: var(--primary); }
+
+        .value-card {
+            background: #ffffff;
+            border: 1px solid rgba(7,29,58,0.08);
+            border-top: 4px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(7,29,58,0.05);
+        }
+
+        .tech-item {
+            background: #fff;
+            color: var(--navy);
+            border-color: rgba(7,29,58,0.10);
+        }
+
+        .tech-item:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(8,185,212,0.05);
+        }
+
+        .process-number {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        details {
+            background: #fff;
+            border-color: rgba(7,29,58,0.10);
+        }
+
+        summary { color: var(--navy); }
+        summary::after { color: var(--primary); }
+
+        .detail-icon {
+            background: rgba(8,185,212,0.10);
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: #f4f8fa;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            background: #fff;
+            color: var(--navy);
+            border-color: rgba(7,29,58,0.12);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            background: #fff;
+        }
+
+        footer {
+            background: var(--navy-deep);
+        }
+
+        footer .logo { background: #fff; border-radius: 10px; padding: 3px; }
+        footer .footer-about p,
+        footer .footer-links ul li a,
+        footer .footer-bottom { color: #a9b8c8; }
+
+        @media (max-width: 768px) {
+            .nav-container { height: 76px; }
+            .logo { width: 175px; height: 66px; }
+            .hero-logo { width: min(300px, 78vw); }
+        }
+
+    </style>
+
+<style>
+/* ===== Aaron Seven Technologies — Premium UI Upgrade ===== */
+:root{
+  --primary:#08b9d4;
+  --primary-dark:#078aa0;
+  --navy:#071d3a;
+  --navy-2:#0b2b50;
+  --ink:#10233d;
+  --muted:#5f7186;
+  --surface:#ffffff;
+  --soft:#f4f9fc;
+  --line:rgba(7,29,58,.10);
+  --shadow:0 18px 50px rgba(7,29,58,.08);
+  --shadow-lg:0 28px 80px rgba(7,29,58,.13);
+}
+body{background:#f7fafc;color:var(--ink)}
+::selection{background:var(--primary);color:#fff}
+.container{max-width:1240px}
+section{padding:110px 0}
+nav{
+  position:sticky!important;top:0!important;margin:0!important;
+  background:rgba(255,255,255,.88)!important;
+  backdrop-filter:blur(18px)!important;
+  -webkit-backdrop-filter:blur(18px)!important;
+  border-bottom:1px solid rgba(7,29,58,.08)!important;
+  box-shadow:0 8px 35px rgba(7,29,58,.06)!important;
+}
+.nav-container{height:78px!important}
+.logo{
+  width:auto!important;height:auto!important;overflow:visible!important;
+  font-size:1.15rem!important;letter-spacing:.2px!important;color:var(--navy)!important;
+}
+.logo span{color:var(--navy)!important}
+.logo strong{color:var(--primary)}
+.nav-links{gap:1.55rem!important}
+.nav-links a{font-size:.82rem!important;letter-spacing:.7px!important;position:relative;padding:8px 0}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+  background:var(--primary);transition:.25s ease
+}
+.nav-links a:hover::after{width:100%}
+
+/* Hero */
+#home{
+  min-height:calc(100vh - 78px)!important;height:auto!important;
+  padding:110px 0 100px!important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(8,185,212,.15),transparent 30%),
+    radial-gradient(circle at 10% 80%,rgba(7,29,58,.05),transparent 28%),
+    linear-gradient(135deg,#fff 0%,#f6fbfd 58%,#e9f8fb 100%)!important;
+  overflow:hidden;
+}
+#home::after{
+  content:"";position:absolute;width:520px;height:520px;border-radius:50%;
+  border:1px solid rgba(8,185,212,.12);right:-250px;bottom:-280px;
+  box-shadow:0 0 0 70px rgba(8,185,212,.025),0 0 0 140px rgba(8,185,212,.018);
+}
+.hero-content{max-width:980px!important}
+.hero-logo{
+  width:min(300px,72vw)!important;margin-bottom:24px!important;
+  filter:drop-shadow(0 20px 35px rgba(7,29,58,.14))!important
+}
+.hero-badge{
+  background:#fff!important;border:1px solid rgba(8,185,212,.25)!important;
+  box-shadow:0 8px 25px rgba(7,29,58,.06);color:var(--primary-dark)!important
+}
+.hero-title{
+  font-size:clamp(3rem,6vw,5.8rem)!important;
+  letter-spacing:-.055em!important;color:var(--navy)!important;
+  line-height:.98!important;margin-bottom:24px!important
+}
+.hero-subtitle{font-size:1.14rem!important;max-width:760px!important;line-height:1.8!important}
+.hero-buttons{gap:14px!important}
+.btn{border-radius:12px!important;padding:14px 24px!important;box-shadow:0 8px 20px rgba(7,29,58,.08)}
+.btn:hover{transform:translateY(-2px)!important}
+.btn-outline{box-shadow:none!important}
+
+/* Headings */
+.section-title{font-size:clamp(2rem,4vw,3rem)!important;letter-spacing:-.035em!important}
+.section-subtitle{line-height:1.8!important}
+
+/* Cards */
+.about-stats,.service-card,.testimonial-card,.contact-grid,.privacy-content,.value-card,details{
+  box-shadow:var(--shadow)!important;
+}
+.service-card,.value-card,.testimonial-card{
+  border-radius:18px!important;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease!important
+}
+.service-card:hover,.value-card:hover,.testimonial-card:hover{
+  transform:translateY(-7px)!important;box-shadow:var(--shadow-lg)!important
+}
+.service-card{padding:34px 30px!important}
+.service-icon{
+  width:58px;height:58px;border-radius:16px;
+  display:flex!important;align-items:center;justify-content:center;
+  background:rgba(8,185,212,.09);font-size:1.8rem!important
+}
+.service-card h3{font-size:1.25rem!important}
+.service-card p{line-height:1.75!important}
+.value-card{border-top-width:3px!important}
+
+/* Trust/process */
+.process-step{padding:34px 20px!important}
+.process-number{
+  width:56px!important;height:56px!important;
+  box-shadow:0 10px 25px rgba(7,29,58,.15)
+}
+.process-grid{position:relative}
+.tech-item{box-shadow:0 5px 18px rgba(7,29,58,.04)!important}
+
+/* Contact */
+.contact-grid{padding:34px!important;border-radius:22px!important}
+.contact-form{box-shadow:0 12px 30px rgba(7,29,58,.05)}
+.contact-form input,.contact-form select,.contact-form textarea{
+  border-radius:10px!important;padding:14px 15px!important
+}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
+  box-shadow:0 0 0 4px rgba(8,185,212,.10)
+}
+
+/* Footer */
+footer{padding:70px 0 25px!important}
+.footer-grid{gap:40px!important}
+.footer-about>div:first-child span{
+  font-size:1.25rem;font-weight:800;color:#fff
+}
+.footer-links a:hover{color:#fff!important}
+
+/* Mobile */
+.mobile-toggle{
+  display:none;border:0;background:transparent;color:var(--navy);
+  font-size:1.65rem;cursor:pointer;padding:8px
+}
+@media(max-width:768px){
+  .nav-container{height:72px!important}
+  .mobile-toggle{display:block}
+  .nav-links{
+    display:none!important;position:absolute;top:72px;left:12px;right:12px;
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:12px;box-shadow:var(--shadow-lg);flex-direction:column;gap:2px
+  }
+  .nav-links.open{display:flex!important}
+  .nav-links a{display:block;padding:13px 12px}
+  #home{padding:82px 0 85px!important;min-height:calc(100vh - 72px)!important}
+  .hero-title{font-size:clamp(2.7rem,12vw,4rem)!important}
+  .hero-subtitle{font-size:1rem!important}
+  .hero-buttons .btn{width:100%}
+  section{padding:80px 0}
+  .contact-grid{padding:22px!important}
+  .privacy-content{padding:28px 22px!important}
+}
+</style>
+
+</head>
+<body>
+
+    <!-- =========================================
+         NAVIGATION 
+         ========================================= -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo" aria-label="Aaron Seven Technologies"><span>Aaron <strong>Seven</strong> Technologies</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#technologies">Tech</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <!-- =========================================
+         HERO SECTION 
+         ========================================= -->
+    <section id="home">
+        <div class="hero-content">
+            <img class="hero-logo" src="./Logo.webp">
+            <span class="hero-badge">Secure • Scalable • Digital Solutions</span>
+            <h1 class="hero-title">Engineering Your <br>Digital Evolution</h1>
+            <p class="hero-subtitle">We build resilient, scalable, and secure software ecosystems. Partner with Aaron Seven Technologies to transform complex business challenges into elegant technological realities.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Start Your Project</a>
+                <a href="#services" class="btn btn-outline">Explore Solutions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         ABOUT & STATS SECTION 
+         ========================================= -->
+    <section id="about" class="bg-alt">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left;">Who We <span>Are</span></h2>
+                    <p>Located in the tech capital of the world—Redwood City, California—<strong>Aaron Seven Technologies</strong> was founded with a singular vision: to bridge the gap between complex enterprise goals and seamless technological execution.</p>
+                    <p>We do not just write code; we architect solutions. From early-stage startups to Fortune 500 enterprises, we provide the technical heavy lifting required to dominate the modern digital landscape. Our agile approach ensures rapid deployment without sacrificing security or scalability.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>250+</h4>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>99%</h4>
+                        <p>Client Retention</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>15+</h4>
+                        <p>Tech Awards</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>24/7</h4>
+                        <p>Active Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <h4>🎯 Our Mission</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">To empower businesses globally by delivering custom, future-proof software that drives measurable revenue and operational efficiency.</p>
+                </div>
+                <div class="value-card">
+                    <h4>👁️ Our Vision</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">To be universally recognized as California's most reliable and innovative IT consulting and development partner.</p>
+                </div>
+                <div class="value-card">
+                    <h4>💎 Core Values</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Radical transparency, absolute integrity, continuous innovation, and an unwavering commitment to engineering excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         EXPANDED SERVICES SECTION 
+         ========================================= -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Enterprise-Grade <span>Solutions</span></h2>
+            <p class="section-subtitle">We offer end-to-end technology services. Whether you need a ground-up build or a massive system migration, our experts are equipped to handle it.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Custom Software Dev</h3>
+                    <p>Bespoke web and desktop applications built to your exact specifications. We utilize microservices architecture to ensure your software can scale massively without bottlenecks.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native iOS, Android, and cross-platform mobile solutions (React Native, Flutter). We build fluid, engaging user interfaces backed by powerful, secure APIs.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Architecture & DevOps</h3>
+                    <p>Seamless migrations to AWS, Azure, or Google Cloud. We implement CI/CD pipelines, containerization (Docker/Kubernetes), and serverless architectures to reduce overhead.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity Audits</h3>
+                    <p>Military-grade security protocols. We offer penetration testing, vulnerability assessments, compliance consulting (HIPAA, SOC2, GDPR), and zero-trust network implementations.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Integrate cutting-edge AI into your workflow. From predictive analytics and natural language processing (NLP) to custom chatbots and workflow automation algorithms.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX Prototyping</h3>
+                    <p>Data-driven design. Before writing a single line of code, our design team creates high-fidelity wireframes and interactive prototypes to ensure optimal user journeys.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Big Data & Analytics</h3>
+                    <p>Transform raw data into actionable intelligence. We build data lakes, real-time analytics dashboards, and complex reporting tools that give you a competitive edge.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>IT Consulting & Strategy</h3>
+                    <p>Not sure where to start? Our vCTO (Virtual Chief Technology Officer) services help you map out a 5-year technology roadmap aligned strictly with your business goals.</p>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         TECHNOLOGIES / TECH STACK SECTION 
+         ========================================= -->
+    <section id="technologies" class="bg-alt">
+        <div class="container">
+            <h2 class="section-title">Tools of our <span>Trade</span></h2>
+            <p class="section-subtitle">We are technology agnostic, meaning we choose the right tool for the job. However, our team holds deep expertise in the following modern stacks.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">JavaScript / TypeScript</div>
+                <div class="tech-item">React.js & Next.js</div>
+                <div class="tech-item">Node.js / Express</div>
+                <div class="tech-item">Python / Django</div>
+                <div class="tech-item">Java & Spring Boot</div>
+                <div class="tech-item">Amazon Web Services (AWS)</div>
+                <div class="tech-item">Microsoft Azure</div>
+                <div class="tech-item">Docker & Kubernetes</div>
+                <div class="tech-item">PostgreSQL / MongoDB</div>
+                <div class="tech-item">GraphQL & REST APIs</div>
+                <div class="tech-item">Flutter / React Native</div>
+                <div class="tech-item">OpenAI API Integration</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         PROCESS / WHY CHOOSE US
+         ========================================= -->
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">How We <span>Deliver</span></h2>
+            <p class="section-subtitle">Transparency and communication are at the core of our Agile methodology. You will never be left in the dark regarding project status.</p>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4>Discovery & Strategy</h4>
+                    <p>We deeply analyze your business needs, target audience, and technical constraints to formulate a robust roadmap.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4>Design & Prototyping</h4>
+                    <p>We create visual wireframes and system architecture diagrams, ensuring alignment before development begins.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4>Agile Development</h4>
+                    <p>Code is written in two-week sprints. You receive regular demos, allowing for continuous feedback and pivoting.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h4>Testing & Deployment</h4>
+                    <p>Rigorous QA testing ensures bug-free delivery. We then handle the secure deployment to your production environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         TESTIMONIALS SECTION
+         ========================================= -->
+    <section id="testimonials" class="bg-alt">
+        <div class="container">
+            <h2 class="section-title">Client <span>Success</span></h2>
+            <p class="section-subtitle">Don't just take our word for it. See what our enterprise partners have to say about working with Aaron Seven Technologies.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Aaron Seven completely overhauled our legacy logistics software. Their cloud migration strategy saved us over $40,000 annually in server costs. Truly an elite team."</p>
+                    <div class="client-info">
+                        <h4>Sarah Jenkins</h4>
+                        <span>CTO, WestCoast Logistics</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Finding reliable developers in the Bay Area is tough, but the Aaron Seven team operates at a different level. Their AI integration helped automate 40% of our customer service."</p>
+                    <div class="client-info">
+                        <h4>Marcus Thorne</h4>
+                        <span>Founder, FinTech Solutions</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"From the first discovery call to final deployment, they were incredibly professional. Their UI/UX team designed a mobile app that our users absolutely love."</p>
+                    <div class="client-info">
+                        <h4>Elena Rodriguez</h4>
+                        <span>VP of Product, HealthSync</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         FAQ SECTION
+         ========================================= -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            <p class="section-subtitle">Got questions? We've got answers. Here are some common inquiries from our prospective clients.</p>
+
+            <div class="faq-container">
+                <details>
+                    <summary>How long does a typical software project take?</summary>
+                    <div class="faq-content">
+                        Project timelines vary greatly depending on complexity. A simple web application might take 4-6 weeks, while a complex enterprise cloud migration or custom CRM can take 3-6 months. We provide detailed timeline estimates during our discovery phase.
+                    </div>
+                </details>
+                <details>
+                    <summary>Do you provide ongoing support after launch?</summary>
+                    <div class="faq-content">
+                        Absolutely. We believe that deployment is just the beginning. We offer various tiered SLA (Service Level Agreement) packages that include 24/7 monitoring, security patching, bug fixes, and feature updates.
+                    </div>
+                </details>
+                <details>
+                    <summary>Who owns the intellectual property (IP) to the code?</summary>
+                    <div class="faq-content">
+                        You do. Once the project is fully paid and delivered, 100% of the intellectual property, source code, and assets are transferred to your company. We act purely as a work-for-hire agency.
+                    </div>
+                </details>
+                <details>
+                    <summary>Do you sign Non-Disclosure Agreements (NDAs)?</summary>
+                    <div class="faq-content">
+                        Yes. We take confidentiality very seriously. We are happy to sign your company's standard NDA before we even have our first consultation call.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         COMPREHENSIVE CONTACT SECTION
+         ========================================= -->
+    <section id="contact" class="bg-alt">
+        <div class="container">
+            <h2 class="section-title">Let's Build the <span>Future</span></h2>
+            <p class="section-subtitle">Whether you have a fully drafted RFP or just a conceptual idea written on a napkin, our engineering consultants are ready to talk.</p>
+            
+            <div class="contact-grid">
+                
+                <!-- Contact Information Column -->
+                <div class="contact-info-col">
+                    <h3 class="contact-info">Get In Touch</h3>
+                    <p class="contact-desc">Our headquarters is located in the heart of the San Francisco Bay Area. Reach out to schedule an in-person meeting or a virtual consultation.</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">📍</div>
+                            <div class="detail-text">
+                                <h4>Address</h4>
+                                <p>3015 East Bay Shore Road<br>Spc 128<br>Redwood City, California, 94063</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">📞</div>
+                            <div class="detail-text">
+                                <h4>Whatsapp</h4>
+                                <p><a href="tel:+14153701809">+1 (415) 370-1809</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">✉️</div>
+                            <div class="detail-text">
+                                <h4>Email Address</h4>
+                                <p><a href="mailto:info@aaron7tech.com">info@aaron7tech.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon">⏰</div>
+                            <div class="detail-text">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM (PST)<br>Emergency IT Support: 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="contact-form">
+                    <div>
+                        <span class="hero-badge">Project inquiry</span>
+                        <h3 style="font-size:1.8rem;color:var(--navy);margin:18px 0 10px;">Tell us what you want to build.</h3>
+                        <p style="color:var(--muted);line-height:1.75;margin-bottom:24px;">
+                            Share your project requirements, goals, timeline, and preferred service. 
+                            We’ll use your information to understand how we can help.
+                        </p>
+                    </div>
+                    <a href="https://forms.gle/MQH7VAAAL14Z4YmB9" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;">
+                        Open Project Inquiry Form →
+                    </a>
+                    <p style="text-align:center;color:var(--muted);font-size:.85rem;margin:0;">
+                        Opens securely in a new tab.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         PRIVACY POLICY SECTION
+         ========================================= -->
+    <section id="privacy">
+        <div class="container">
+            <h2 class="section-title">Privacy <span>Policy</span></h2>
+            <p class="section-subtitle">We are committed to protecting your personal information and your right to privacy.</p>
+            
+            <div class="privacy-content">
+                <p><strong>Last Updated:</strong> July 16, 2026</p>
+                <p>This Privacy Policy applies to all information collected through our website, as well as any related services, sales, marketing, or events. Please read this privacy policy carefully as it will help you understand what we do with the information that we collect.</p>
+
+                <h3>1. Information We Collect</h3>
+                <p>We collect personal information that you voluntarily provide to us when you register on the website, express an interest in obtaining information about us or our products and services, or otherwise contact Us. The personal information that we collect depends on the context of your interactions with us and the website.</p>
+                <ul>
+                    <li><strong>Personal Information Provided by You:</strong> We collect names; phone numbers; email addresses; mailing addresses; job titles; contact preferences; and other similar information.</li>
+                    <li><strong>Automatically Collected Information:</strong> We automatically collect certain information when you visit, use or navigate the website. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser, and device characteristics.</li>
+                </ul>
+
+                <h3>2. How We Use Your Information</h3>
+                <p>We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent. Specifically, we use the information we collect or receive to:</p>
+                <ul>
+                    <li>Respond to user inquiries and offer support.</li>
+                    <li>Send administrative information to you, such as product, service, and new feature information.</li>
+                    <li>Fulfill and manage your requests, orders, and contracts.</li>
+                    <li>Deliver targeted advertising to you based on your interests and location.</li>
+                </ul>
+
+                <h3>3. Will Your Information Be Shared?</h3>
+                <p>We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations. We strictly do not sell, rent, or trade any of your information with third parties for promotional purposes.</p>
+
+                <h3>4. How Long Do We Keep Your Information?</h3>
+                <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements).</p>
+
+                <h3>5. How We Keep Your Information Safe</h3>
+                <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process, including AES-256 encryption and strict access controls. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet can be guaranteed to be 100% secure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         EXPANDED FOOTER
+         ========================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-about">
+                    <div >
+                        <span>Aaron7Tech</span>
+                    </div>
+                    <p>Delivering high-performance, secure, and scalable digital solutions from Redwood City, California to the world. Your technology partner for the modern era.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#process">How We Work</a></li>
+                        <li><a href="#testimonials">Client Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Security Statement</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Stay Updated</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Subscribe to our newsletter for the latest tech insights.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                        <input type="email" placeholder="Email Address" required>
+                        <button type="submit">Join</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aaron Seven Technologies. All rights reserved. | Built in Silicon Valley.</p>
+            </div>
+        </div>
+    </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.mobile-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? '×' : '☰';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = '☰';
+      });
+    });
+  }
+});
+</script>
+
+</body>
+</html>
