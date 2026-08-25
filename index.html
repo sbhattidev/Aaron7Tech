@@ -40,9 +40,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        #nl-badge {
-            display: none !important;
-            }
 
         a {
             text-decoration: none;
@@ -1412,12 +1409,12 @@ footer{
 
 /* Floating contact + back to top */
 #premium-whatsapp{
-  position:fixed;right:22px;bottom:22px;z-index:999;
+  position:fixed;right:22px;bottom:60px;z-index:999;
   width:56px;height:56px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   background:#18b957;color:#fff;
   box-shadow:0 15px 35px rgba(24,185,87,.28);
-  font-size:1.45rem;font-weight:800;
+  font-size:2rem;font-weight:800;
   transition:.25s ease;
 }
 #premium-whatsapp:hover{transform:translateY(-4px) scale(1.04);color:#fff}
@@ -1989,7 +1986,7 @@ document.addEventListener('DOMContentLoaded', () => {
   wa.rel = 'noopener noreferrer';
   wa.setAttribute('aria-label', 'Chat with Aaron Seven Technologies on WhatsApp');
   wa.title = 'Chat on WhatsApp';
-  wa.textContent = '◉';
+  wa.textContent = '🗭';
   document.body.appendChild(wa);
 
   // Add an active state without changing the original navigation markup.
@@ -2003,13 +2000,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-window.addEventListener('load', function () {
-    const badge = document.getElementById('nl-badge');
-
-    if (badge) {
-        badge.style.display = 'none';
-    }
-});
 </script>
 
 </body>
