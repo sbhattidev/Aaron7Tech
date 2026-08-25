@@ -2002,6 +2002,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!a.rel.includes('noopener')) a.rel = (a.rel + ' noopener noreferrer').trim();
   });
 });
+
+window.addEventListener('load', function () {
+    const badge = document.getElementById('nl-badge');
+
+    if (badge) {
+        badge.style.display = 'none';
+    }
+});
 </script>
 
 </body>
