@@ -40,6 +40,9 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        #nl-badge {
+            display: none !important;
+            }
 
         a {
             text-decoration: none;
@@ -1902,27 +1905,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
         </div>
     </footer>
 
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.mobile-toggle');
-  const links = document.querySelector('.nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.textContent = open ? '×' : '☰';
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = '☰';
-      });
-    });
-  }
-});
-</script>
 
 
 <script id="premium-10x-upgrade-js">
